@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
   users: any;
 
   constructor(private http: HttpClient) {}
-  // setTheme('bs5');
 
   ngOnInit(): void {
     this.http.get('http://localhost:5000/api/users').subscribe({
