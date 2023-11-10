@@ -1,17 +1,19 @@
-import { provideHttpClient } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BrowserModule } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { SharedModule } from './_modules/shared.module';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    importProvidersFrom(BrowserModule),
     provideRouter(routes),
     provideHttpClient(),
     provideAnimations(),
-    importProvidersFrom(BrowserModule),
-    importProvidersFrom(BsDropdownModule.forRoot()),
+    importProvidersFrom(SharedModule),
+    provideToastr({ positionClass: 'toast-bottom-right' }),
   ],
 };
